@@ -19,10 +19,8 @@ import java.util.Properties;
 @ComponentScan(basePackages = "com.kodcu") // As <context:component-scan ../>
 public class WebConfig extends WebMvcConfigurerAdapter {
 
-
-
     @Bean
-    // Enjekte edilebilir Transaction yönetici
+    // Injectible Transaction Manager Bean
     public HibernateTransactionManager createTransactionManager(){
 
        HibernateTransactionManager transactionManager=new HibernateTransactionManager();
@@ -33,7 +31,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     }
 
     @Bean
-    // Enjekte edilebilir Hibernate Session üreteci
+    // Injectible Hibernate SessionFactory Bean
     public LocalSessionFactoryBean createSessionFactoryBean(){
         LocalSessionFactoryBean localSessionFactoryBean=new LocalSessionFactoryBean();
         Properties properties=new Properties();
@@ -47,7 +45,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     }
 
     @Bean
-    // Enjekte edilebilir veri kaynağı
+    // Injectible DataSource Bean
     public BasicDataSource createDataSource(){
         BasicDataSource dataSource=new BasicDataSource();
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");
